@@ -12,7 +12,6 @@ A full-stack trading platform clone with a Vite + React frontend and a Node.js +
 Install dependencies in each workspace:
 
 ```bash
-npm install
 npm install --prefix frontend
 npm install --prefix backend
 ```
@@ -31,18 +30,8 @@ Create `frontend/.env`:
 VITE_API_URL=http://localhost:3000
 ```
 
-Run both apps:
-
-```bash
-npm run dev
-```
-
-Frontend: `http://localhost:5173`
-Backend: `http://localhost:3000`
-
 ## Scripts
 
-- `npm run dev` - run frontend and backend together.
 - `npm run start:frontend` - run only the Vite frontend.
 - `npm run start:backend` - run only the Express backend.
 - `npm run build` - build frontend and backend.

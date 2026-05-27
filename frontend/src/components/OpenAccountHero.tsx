@@ -35,11 +35,8 @@ const OpenAccountHero = () => {
         throw new Error(data.message || "Signup failed");
       }
 
-      // Signup successful
       const { token, user } = data;
 
-      // Save token to localStorage (optional, but good for persistence if dashboard on same domain, here different ports but safe to keep)
-      // Serialize user object safely for URL
       const userStr = encodeURIComponent(JSON.stringify(user));
       window.location.href = `/dashboard?token=${token}&user=${userStr}`;
 

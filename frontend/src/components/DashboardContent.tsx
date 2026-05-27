@@ -1,15 +1,14 @@
 ﻿import React, { useContext } from "react";
 import Summary from "@/components/Summary";
 import StockDetails from "@/components/StockDetails";
-import { GeneralContext } from "./GeneralContext";
+import { GeneralContext } from "@/contexts/GeneralContext";
 
 export default function DashboardContent() {
-    const { activeView, selectedStockForChart } = useContext(GeneralContext);
+  const { activeView, selectedStockForChart } = useContext(GeneralContext);
 
-    if (activeView === 'chart' && selectedStockForChart) {
-        return <StockDetails stock={selectedStockForChart} />;
-    }
+  if (activeView === 'chart' && selectedStockForChart) {
+    return <StockDetails stock={selectedStockForChart} />;
+  }
 
-    return <Summary />;
+  return <Summary />;
 }
-

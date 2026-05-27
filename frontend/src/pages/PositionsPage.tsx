@@ -1,5 +1,5 @@
 ﻿import React, { useContext } from 'react';
-import { GeneralContext } from '@/components/GeneralContext';
+import { GeneralContext } from '@/contexts/GeneralContext';
 
 export default function PositionsPage() {
   const { positions } = useContext(GeneralContext);

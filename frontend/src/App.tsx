@@ -5,6 +5,7 @@ import SignupRedirectPage from "@/pages/SignupRedirectPage";
 import DashboardHomePage from "@/pages/DashboardHomePage";
 import AppsPage from "@/pages/AppsPage";
 import FundsPage from "@/pages/FundsPage";
+import ProfilePage from "@/pages/ProfilePage";
 import HoldingsPage from "@/pages/HoldingsPage";
 import OrdersPage from "@/pages/OrdersPage";
 import PositionsPage from "@/pages/PositionsPage";
@@ -39,6 +40,7 @@ export default function App() {
         <Route path="holdings" element={<HoldingsPage />} />
         <Route path="positions" element={<PositionsPage />} />
         <Route path="funds" element={<FundsPage />} />
+        <Route path="profile" element={<ProfilePage />} />
         <Route path="apps" element={<AppsPage />} />
         <Route path="watchlist" element={<WatchlistPage />} />
       </Route>

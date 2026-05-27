@@ -1,6 +1,6 @@
 ﻿import Link from '@/routing/Link';
 import React, { useContext } from 'react';
-import { GeneralContext } from '@/components/GeneralContext';
+import { GeneralContext } from '@/contexts/GeneralContext';
 
 export default function OrdersPage() {
   const { orders } = useContext(GeneralContext);

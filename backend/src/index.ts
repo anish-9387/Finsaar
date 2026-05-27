@@ -37,6 +37,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use((req: Request, res: Response, next: NextFunction) => {
+  const start = Date.now();
+  res.on("finish", () => {
+    const duration = Date.now() - start;
+    console.log(`${req.method} ${req.originalUrl} ${res.statusCode} ${duration}ms`);
+  });
+  next();
+});
+
 const authenticate = (req: AuthRequest, _res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
   if (!authHeader) {
@@ -53,6 +62,14 @@ const authenticate = (req: AuthRequest, _res: Response, next: NextFunction) => {
 
   return next();
 };
+
+const toUserDto = (user: any) => ({
+  id: user._id?.toString() ?? user.id ?? "",
+  email: user.email,
+  username: user.username,
+  balance: Number(user.balance ?? 0),
+  createdAt: user.createdAt,
+});
 
 // Health Check
 app.get("/", (_req: Request, res: Response) => {
@@ -79,7 +96,7 @@ app.post("/auth/signup", async (req: Request, res: Response) => {
       expiresIn: "1d",
     });
 
-    return res.json({ message: "User created successfully", token, user: { email, username, id: newUser._id } });
+    return res.json({ message: "User created successfully", token, user: toUserDto(newUser) });
   } catch (error) {
     return res.status(500).json({ message: "Error creating user", error });
   }
@@ -102,10 +119,69 @@ app.post("/auth/login", async (req: Request, res: Response) => {
       expiresIn: "1d",
     });
 
-    return res.json({ message: "Login successful", token, user: { email: user.email, username: user.username, id: user._id } });
+    return res.json({ message: "Login successful", token, user: toUserDto(user) });
   } catch (error) {
     return res.status(500).json({ message: "Error logging in", error });
   }
+});
+
+app.get("/me", authenticate, async (req: AuthRequest, res: Response) => {
+  if (!req.user) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+
+  const user = await UserModel.findById(req.user.id);
+  if (!user) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  return res.json({ user: toUserDto(user) });
+});
+
+app.post("/funds/add", authenticate, async (req: AuthRequest, res: Response) => {
+  if (!req.user) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+
+  const amount = Number(req.body.amount);
+  if (!Number.isFinite(amount) || amount <= 0) {
+    return res.status(400).json({ message: "Invalid amount" });
+  }
+
+  const user = await UserModel.findById(req.user.id);
+  if (!user) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  user.balance = Number(user.balance ?? 0) + amount;
+  await user.save();
+
+  return res.json({ message: "Funds added", user: toUserDto(user) });
+});
+
+app.post("/funds/withdraw", authenticate, async (req: AuthRequest, res: Response) => {
+  if (!req.user) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+
+  const amount = Number(req.body.amount);
+  if (!Number.isFinite(amount) || amount <= 0) {
+    return res.status(400).json({ message: "Invalid amount" });
+  }
+
+  const user = await UserModel.findById(req.user.id);
+  if (!user) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  if (Number(user.balance ?? 0) < amount) {
+    return res.status(400).json({ message: "Insufficient balance" });
+  }
+
+  user.balance = Number(user.balance ?? 0) - amount;
+  await user.save();
+
+  return res.json({ message: "Funds withdrawn", user: toUserDto(user) });
 });
 
 // Data Routes
@@ -126,7 +202,6 @@ app.get("/allOrders", authenticate, async (req: AuthRequest, res: Response) => {
 
 app.post("/newOrder", authenticate, async (req: AuthRequest, res: Response) => {
   if (!req.user) { return res.status(401).send("Unauthorized"); }
-  // body: { name, qty, price, mode }
   const newOrder = new OrdersModel({
     ...req.body,
     user: req.user.id
@@ -148,9 +223,7 @@ app.post("/seed", authenticate, async (req: AuthRequest, res: Response) => {
 
   // Add Holdings
   const stockNames = [
-    "RELIANCE", "TCS", "INFY", "HDFCBANK", "ICICIBANK", "SBIN", "ITC", "HINDUNILVR",
-    "LT", "AXISBANK", "KOTAKBANK", "BHARTIARTL", "ASIANPAINT", "HCLTECH", "WIPRO",
-    "MARUTI", "TATAMOTORS", "SUNPHARMA", "ULTRACEMCO", "ONGC"
+    "RELIANCE", "TCS", "INFY", "HDFCBANK", "ICICIBANK", "SBIN", "ITC", "HINDUNILVR", "LT", "AXISBANK", "KOTAKBANK", "BHARTIARTL", "ASIANPAINT", "HCLTECH", "WIPRO", "MARUTI", "TATAMOTORS", "SUNPHARMA", "ULTRACEMCO", "ONGC"
   ];
 
   let tempHoldings = [];

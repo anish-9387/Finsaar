@@ -16,13 +16,13 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 text-left text-[#444] leading-7 md:leading-8 text-sm md:text-[17px]">
           <div>
             <p className="mb-4">
-              We kicked off operations on the 15th of August, 2010 with the goal of breaking all barriers that traders and investors face in India in terms of cost, support, and technology. We named the company Zerodha, a combination of Zero and "Rodha", the Sanskrit word for barrier.
+              We kick-started operations on the 15th of August, 2010 with the goal of breaking all barriers that traders and investors face in India in terms of cost, support, and technology. We named the company Zerodha, a combination of Zero and "Rodha", the Sanskrit word for barrier.
             </p>
             <p className="mb-4">
               Today, our disruptive pricing models and in-house technology have made us the biggest stock broker in India.
             </p>
             <p>
-              Over 1+ Crore clients place millions of orders every day through our powerful ecosystem of investment platforms, contributing over 15% of all Indian retail trading volumes.
+              Over 1.6+ crore clients place billions of orders every year through our powerful ecosystem of investment platforms, contributing over 15% of all Indian retail trading volumes.
             </p>
           </div>
           <div>
@@ -30,10 +30,10 @@ export default function AboutPage() {
               In addition, we run a number of popular open online educational and community initiatives to empower retail traders and investors.
             </p>
             <p className="mb-4">
-              <a href="#" className="text-[#387ed1] hover:text-black transition-colors font-medium">Rainmatter</a>, our fintech fund and incubator, has invested in several fintech startups with the goal of growing the Indian capital markets.
+              <a href="https://rainmatter.com/" className="text-[#387ed1] hover:text-black transition-colors font-medium">Rainmatter</a>, our fintech fund and incubator, has invested in several fintech startups with the goal of growing the Indian capital markets.
             </p>
             <p>
-              And yet, we are always up to something new every day. Catch up on the latest updates on our <a href="#" className="text-[#387ed1] hover:text-black transition-colors font-medium">blog</a> or see what the media is <a href="#" className="text-[#387ed1] hover:text-black transition-colors font-medium">saying about us</a>.
+              And yet, we are always up to something new every day. Catch up on the latest updates on our <a href="https://zerodha.com/z-connect" className="text-[#387ed1] hover:text-black transition-colors font-medium">blog</a> or see what the media is <a href="https://zerodha.com/media" className="text-[#387ed1] hover:text-black transition-colors font-medium">saying about us</a> or learn more about our business and product <a href="https://zerodha.com/about/philosophy/" className="text-[#387ed1] hover:text-black transition-colors font-medium">philosophies</a>.
             </p>
           </div>
         </div>

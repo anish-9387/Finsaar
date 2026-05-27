@@ -8,7 +8,7 @@ const PricingSection = () => {
         <div className="flex-1 min-w-55 max-w-xl">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-medium mb-6 md:mb-8 text-gray-900">Unbeatable pricing</h2>
           <p className="text-gray-700 text-sm sm:text-base -mb-6 md:mb-6">We pioneered the concept of discount broking and price transparency in India. Flat fees and no hidden charges.</p>
-          <a href="#" className="hidden lg:flex text-blue-600 font-medium items-center gap-2 group w-fit">
+          <a href="/pricing" className="hidden lg:flex text-blue-600 font-medium items-center gap-2 group w-fit">
             See pricing <span className="group-hover:translate-x-1 transition-transform"><i className="fa-solid fa-arrow-right"></i></span>
           </a>
         </div>

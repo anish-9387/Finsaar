@@ -60,8 +60,8 @@ const Navbar = () => {
 
       {/* Expanded Menu Container */}
       {isMenuOpen && (
-        <div className="absolute top-16 left-0 w-full max-h-[90vh] overflow-y-auto bg-white shadow-lg border-t border-gray-100 py-4 fade-in-animation flex flex-col">
-          <div className="max-w-5xl mx-auto px-4 w-full h-full flex flex-col justify-between">
+        <div className="absolute top-16 right-0 w-full md:right-10 md:w-225 max-h-[90vh] overflow-y-auto bg-white shadow-lg border-t border-gray-100 md:border md:border-gray-100 md:rounded-lg py-6 fade-in-animation">
+          <div className="px-4 md:px-6 w-full h-full">
             <div className="flex flex-col gap-4 sm:gap-6">
               {/* Mobile Nav Links */}
               <div className="grid grid-cols-2 gap-y-2 md:hidden text-[#444] font-medium text-sm">
@@ -76,32 +76,38 @@ const Navbar = () => {
               {/* Product Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-x-2 gap-y-4 md:gap-8 text-center md:mb-6">
                 <MenuItem
+                  url="https://kite.zerodha.com/"
                   imagePath="/assets/images/kite-logo.svg"
                   title="Kite"
                   desc="Trading platform"
                 />
                 <MenuItem
+                  url="https://console.zerodha.com/"
                   imagePath="/assets/images/console.svg"
                   title="Console"
                   desc="Backoffice"
                 />
                 <MenuItem
+                  url="https://zerodha.com/products/api/"
                   imagePath="/assets/images/kite-connect.svg"
                   title="Kite Connect"
                   desc="Trading APIs"
                 />
                 <MenuItem
+                  url="https://coin.zerodha.com/"
                   imagePath="/assets/images/coin.svg"
                   title="Coin"
                   desc="Mutual funds"
                 />
                 <div className="md:hidden contents">
                   <MenuItem
+                    url="https://zerodha.com/varsity/"
                     imagePath="/assets/images/varsity-logo.png"
                     title="Varsity"
                     desc="Education"
                   />
                   <MenuItem
+                    url="https://tradingqna.com/"
                     imagePath="/assets/images/tqna.png"
                     title="Trading Q&A"
                     desc="Q&A"
@@ -116,20 +122,20 @@ const Navbar = () => {
                 <div>
                   <h3 className="font-semibold text-base mb-2 sm:mb-4 text-gray-800">Utilities</h3>
                   <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm font-medium text-gray-500">
-                    <li className="hover:text-[#387ed1] cursor-pointer">Calculators</li>
-                    <li className="hover:text-[#387ed1] cursor-pointer">Brokerage calculator</li>
-                    <li className="hover:text-[#387ed1] cursor-pointer">Margin calculator</li>
-                    <li className="hover:text-[#387ed1] cursor-pointer">SIP calculator</li>
+                    <li className="hover:text-[#387ed1] cursor-pointer"><a href="https://zerodha.com/calculators/">Calculators</a></li>
+                    <li className="hover:text-[#387ed1] cursor-pointer"><a href="https://zerodha.com/brokerage-calculator/">Brokerage calculator</a></li>
+                    <li className="hover:text-[#387ed1] cursor-pointer"><a href="https://zerodha.com/margin-calculator/">Margin calculator</a></li>
+                    <li className="hover:text-[#387ed1] cursor-pointer"><a href="https://zerodha.com/calculators/sip-calculator/">SIP calculator</a></li>
                   </ul>
                 </div>
                 {/* Updates */}
                 <div>
                   <h3 className="font-semibold text-base mb-2 sm:mb-4 text-gray-800">Updates</h3>
                   <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm font-medium text-gray-500">
-                    <li className="hover:text-[#387ed1] cursor-pointer">Z-Connect blog</li>
-                    <li className="hover:text-[#387ed1] cursor-pointer">Circulars / Bulletin</li>
-                    <li className="hover:text-[#387ed1] cursor-pointer">IPOs</li>
-                    <li className="hover:text-[#387ed1] cursor-pointer">Markets</li>
+                    <li className="hover:text-[#387ed1] cursor-pointer"><a href="https://zerodha.com/z-connect/">Z-Connect blog</a></li>
+                    <li className="hover:text-[#387ed1] cursor-pointer"><a href="https://zerodha.com/marketintel/bulletin/">Circulars / Bulletin</a></li>
+                    <li className="hover:text-[#387ed1] cursor-pointer"><a href="https://zerodha.com/ipo/">IPOs</a></li>
+                    <li className="hover:text-[#387ed1] cursor-pointer"><a href="https://zerodha.com/markets">Markets</a></li>
                   </ul>
                 </div>
                 {/* Desktop Only Education Section (Hidden on Mobile as it moved to grid) */}
@@ -156,24 +162,27 @@ const Navbar = () => {
 };
 
 type MenuItemProps = {
+  url: string;
   imagePath: string;
   title: string;
   desc: string;
 };
 
-const MenuItem = ({ imagePath, title, desc }: MenuItemProps) => {
+const MenuItem = ({ imagePath, title, desc, url }: MenuItemProps) => {
   return (
     <div className="flex flex-row items-center md:flex-col md:justify-center gap-3 md:gap-4 cursor-pointer group text-left md:text-center">
       {/* Icon */}
-      <img
+      <a href={url}>
+        <img
         src={imagePath}
         alt={title}
         className="w-6 h-6 md:w-14 md:h-14 object-contain"
       />
-      <div>
-        <h4 className="font-medium text-gray-800 text-base md:text-lg group-hover:text-[#387ed1] transition-colors">{title}</h4>
-        <p className="text-gray-400 text-xs mt-1 hidden md:block">{desc}</p>
-      </div>
+        <div>
+          <h4 className="font-medium text-gray-800 text-base md:text-lg group-hover:text-[#387ed1] transition-colors">{title}</h4>
+          <p className="text-gray-400 text-xs mt-1 hidden md:block">{desc}</p>
+        </div>
+      </a>
     </div>
   );
 };

@@ -31,6 +31,10 @@ const PricingCharges = () => {
                 <td className="p-4">NRI account (offline only)</td>
                 <td className="p-4">₹ 500</td>
               </tr>
+              <tr className="border-b border-gray-100 hover:bg-gray-50">
+                <td className="p-4">HUF account</td>
+                <td className="p-4"><span className="bg-[#4caf50] text-white px-2 py-1 text-xs font-bold rounded uppercase">Free</span> (online) / ₹ 500 (offline)</td>
+              </tr>
               <tr className="hover:bg-gray-50">
                 <td className="p-4">Partnership, LLP, HUF, or Corporate accounts (offline only)</td>
                 <td className="p-4">₹ 500</td>
@@ -70,7 +74,7 @@ const PricingCharges = () => {
           </table>
         </div>
         <p className="text-xs text-[#9b9b9b] mt-4 leading-5">
-          * Lower AMC is applicable only if the account qualifies as a Basic Services Demat Account (BSDA). BSDA account holders cannot hold more than one demat account. To learn more about BSDA, <a href="#" className="text-[#387ed1]">click here</a>.
+          * Lower AMC is applicable only if the account qualifies as a Basic Services Demat Account (BSDA). BSDA account holders cannot hold more than one demat account. To learn more about BSDA, <a href="https://support.zerodha.com/category/account-opening/offline-account-opening/bsda/articles/how-to-open-a-basic-service-demat-account-at-zerodha" className="text-[#387ed1]">click here</a>.
         </p>
       </div>
 

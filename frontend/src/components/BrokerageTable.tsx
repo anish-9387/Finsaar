@@ -31,13 +31,29 @@ const BrokerageTable = () => {
       <div className="border border-gray-100 rounded text-sm text-[#666] overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="bg-white border-b border-gray-100 text-[#444]">
-              <th className="p-4 font-normal w-1/5"></th>
-              <th className="p-4 font-normal w-1/5">Equity delivery</th>
-              <th className="p-4 font-normal w-1/5">Equity intraday</th>
-              <th className="p-4 font-normal w-1/5">F&O - Futures</th>
-              <th className="p-4 font-normal w-1/5">F&O - Options</th>
-            </tr>
+            {activeTab === 'equity' && (
+              <tr className="bg-white border-b border-gray-100 text-[#444]">
+                <th className="p-4 font-normal w-1/5"></th>
+                <th className="p-4 font-normal w-1/5">Equity delivery</th>
+                <th className="p-4 font-normal w-1/5">Equity intraday</th>
+                <th className="p-4 font-normal w-1/5">F&O - Futures</th>
+                <th className="p-4 font-normal w-1/5">F&O - Options</th>
+              </tr>
+            )}
+            {activeTab === 'currency' && (
+              <tr className="bg-white border-b border-gray-100 text-[#444]">
+                <th className="p-4 font-normal w-1/3"></th>
+                <th className="p-4 font-normal w-1/3">Currency futures</th>
+                <th className="p-4 font-normal w-1/3">Currency options</th>
+              </tr>
+            )}
+            {activeTab === 'commodity' && (
+              <tr className="bg-white border-b border-gray-100 text-[#444]">
+                <th className="p-4 font-normal w-1/3"></th>
+                <th className="p-4 font-normal w-1/3">Commodity futures</th>
+                <th className="p-4 font-normal w-1/3">Commodity options</th>
+              </tr>
+            )}
           </thead>
           <tbody>
             {activeTab === 'equity' && (
@@ -92,21 +108,79 @@ const BrokerageTable = () => {
               </>
             )}
             {activeTab === 'currency' && (
-              <tr>
-                <td colSpan={5} className="p-8 text-center text-gray-400 italic">Currency data to be added based on requirements (Placeholder)</td>
-              </tr>
+              <>
+                <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                  <td className="p-4 text-[#444]">Brokerage</td>
+                  <td className="p-4">0.03% or ₹ 20/executed order whichever is lower</td>
+                  <td className="p-4">₹ 20/executed order</td>
+                </tr>
+                <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                  <td className="p-4 text-[#444]">STT/CTT</td>
+                  <td className="p-4">No STT</td>
+                  <td className="p-4">No STT</td>
+                </tr>
+                <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                  <td className="p-4 text-[#444]">Transaction charges</td>
+                  <td className="p-4">NSE: 0.00035%<br />BSE: 0.00045%</td>
+                  <td className="p-4">NSE: 0.0311%<br />BSE: 0.001%</td>
+                </tr>
+                <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                  <td className="p-4 text-[#444]">GST</td>
+                  <td className="p-4">18% on (brokerage + SEBI charges + transaction charges)</td>
+                  <td className="p-4">18% on (brokerage + SEBI charges + transaction charges)</td>
+                </tr>
+                <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                  <td className="p-4 text-[#444]">SEBI charges</td>
+                  <td className="p-4">₹10 / crore</td>
+                  <td className="p-4">₹10 / crore</td>
+                </tr>
+                <tr className="hover:bg-gray-50 transition-colors">
+                  <td className="p-4 text-[#444]">Stamp charges</td>
+                  <td className="p-4">0.0001% or ₹10 / crore on buy side</td>
+                  <td className="p-4">0.0001% or ₹10 / crore on buy side</td>
+                </tr>
+              </>
             )}
             {activeTab === 'commodity' && (
-              <tr>
-                <td colSpan={5} className="p-8 text-center text-gray-400 italic">Commodity data to be added based on requirements (Placeholder)</td>
-              </tr>
+              <>
+                <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                  <td className="p-4 text-[#444]">Brokerage</td>
+                  <td className="p-4">0.03% or Rs. 20/executed order whichever is lower</td>
+                  <td className="p-4">₹ 20/executed order</td>
+                </tr>
+                <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                  <td className="p-4 text-[#444]">STT/CTT</td>
+                  <td className="p-4">0.01% on sell side (Non-Agri)</td>
+                  <td className="p-4">0.05% on sell side</td>
+                </tr>
+                <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                  <td className="p-4 text-[#444]">Transaction charges</td>
+                  <td className="p-4">MCX: 0.0021%<br />NSE: 0.0001%</td>
+                  <td className="p-4">MCX: 0.0418%<br />NSE: 0.001%</td>
+                </tr>
+                <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                  <td className="p-4 text-[#444]">GST</td>
+                  <td className="p-4">18% on (brokerage + SEBI charges + transaction charges)</td>
+                  <td className="p-4">18% on (brokerage + SEBI charges + transaction charges)</td>
+                </tr>
+                <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                  <td className="p-4 text-[#444]">SEBI charges</td>
+                  <td className="p-4">Agri: ₹1 / crore<br />Non-agri: ₹10 / crore</td>
+                  <td className="p-4">₹10 / crore</td>
+                </tr>
+                <tr className="hover:bg-gray-50 transition-colors">
+                  <td className="p-4 text-[#444]">Stamp charges</td>
+                  <td className="p-4">0.002% or ₹200 / crore on buy side</td>
+                  <td className="p-4">0.003% or ₹300 / crore on buy side</td>
+                </tr>
+              </>
             )}
           </tbody>
         </table>
       </div>
 
       <div className="text-center mt-8">
-        <a href="#" className="text-[#387ed1] text-lg font-medium hover:text-black transition-colors">Calculate your costs upfront</a>
+        <a href="https://zerodha.com/brokerage-calculator" className="text-[#387ed1] text-lg font-medium hover:text-black transition-colors">Calculate your costs upfront</a>
         <span className="text-[#444] text-lg"> using our brokerage calculator</span>
       </div>
     </div>

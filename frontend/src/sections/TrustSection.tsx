@@ -10,11 +10,11 @@ const TrustSection = () => {
           <div className="space-y-6 md:space-y-8">
             <div>
               <h2 className="text-lg sm:text-xl font-medium mb-2">Customer-first always</h2>
-              <p className="text-gray-700 leading-relaxed text-sm sm:text-base">That's why 1.6+ crore customers trust Zerodha with ~ ₹6 lakh crores of equity investments, making us India’s largest broker; contributing to 15% of daily retail exchange volumes in India.</p>
+              <p className="text-gray-700 leading-relaxed text-sm sm:text-base">That's why 1.6+ crore customers trust Zerodha with ~ ₹6 lakh crores of equity investments, making us India's largest broker; contributing to 15% of daily retail exchange volumes in India.</p>
             </div>
             <div>
               <h2 className="text-lg sm:text-xl font-medium mb-2">No spam or gimmicks</h2>
-              <p className="text-gray-700 leading-relaxed text-sm sm:text-base">No gimmicks, spam, "gamification", or annoying push notifications. High quality apps that you use at your pace, the way you like. <a href="#" className="text-blue-600">Our philosophies.</a></p>
+              <p className="text-gray-700 leading-relaxed text-sm sm:text-base">No gimmicks, spam, "gamification", or annoying push notifications. High quality apps that you use at your pace, the way you like. <a href="https://zerodha.com/about/philosophy" className="text-blue-600">Our philosophies.</a></p>
             </div>
             <div>
               <h2 className="text-lg sm:text-xl font-medium mb-2">The Zerodha universe</h2>
@@ -22,7 +22,7 @@ const TrustSection = () => {
             </div>
             <div>
               <h2 className="text-lg sm:text-xl font-medium mb-2">Do better with money</h2>
-              <p className="text-gray-700 leading-relaxed text-sm sm:text-base">With initiatives like  <a href="#" className="text-blue-600">Nudge</a> and  <a href="#" className="text-blue-600">Kill Switch</a>, we don't just facilitate transactions, but actively help you do better with your money.</p>
+              <p className="text-gray-700 leading-relaxed text-sm sm:text-base">With initiatives like  <a href="https://support.zerodha.com/category/trading-and-markets/kite-features/nudges/articles/what-is-nudge" className="text-blue-600">Nudge</a> and  <a href="https://support.zerodha.com/category/console/profile/killswitch/articles/what-is-the-kill-switch" className="text-blue-600">Kill Switch</a>, we don't just facilitate transactions, but actively help you do better with your money.</p>
             </div>
           </div>
         </div>
@@ -30,10 +30,10 @@ const TrustSection = () => {
         <div className="w-full lg:w-3/5 relative flex flex-col items-center justify-center mb-8 lg:mb-0">
           <img src="/assets/images/ecosystem.png" alt="Trust Section Image" className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl h-auto" />
           <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 mt-8 sm:mt-12 w-full justify-center items-center">
-            <a href="#" className='text-blue-500 text-base sm:text-lg'>
+            <a href="/products" className='text-blue-500 text-base sm:text-lg'>
               Explore Our Products <i className="fa-solid fa-arrow-right ml-2"></i>
             </a>
-            <a href="#" className="text-blue-500 text-base sm:text-lg">
+            <a href="https://kite-demo.zerodha.com/" className="text-blue-500 text-base sm:text-lg">
               Try Kite demo <i className="fa-solid fa-arrow-right ml-2"></i>
             </a>
           </div>

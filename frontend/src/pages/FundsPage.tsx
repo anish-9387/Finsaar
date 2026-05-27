@@ -73,7 +73,7 @@ export default function FundsPage() {
 
           <div className="border border-gray-100 bg-white rounded-sm p-8 text-center">
             <p className="text-[#666] mb-4">You don't have a commodity account</p>
-            <Link href="#" className="text-[#387ed1] font-medium hover:text-black transition-colors">Open Account</Link>
+            <Link href="/open-account" className="text-[#387ed1] font-medium hover:text-black transition-colors">Open Account</Link>
           </div>
         </div>
       </div>

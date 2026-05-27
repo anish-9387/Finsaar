@@ -29,7 +29,7 @@ const AboutTeam = () => {
             Playing basketball is his zen.
           </p>
           <p>
-            Connect on <a href="#" className="text-[#387ed1] font-medium hover:text-black">Homepage</a> / <a href="#" className="text-[#387ed1] font-medium hover:text-black">TradingQnA</a> / <a href="#" className="text-[#387ed1] font-medium hover:text-black">Twitter</a>
+            Connect on <a href="https://nithinkamath.me/" className="text-[#387ed1] font-medium hover:text-black">Homepage</a> / <a href="https://tradingqna.com/u/nithin/summary" className="text-[#387ed1] font-medium hover:text-black">TradingQnA</a> / <a href="https://twitter.com/Nithin0dha" className="text-[#387ed1] font-medium hover:text-black">Twitter</a>
           </p>
         </div>
       </div>

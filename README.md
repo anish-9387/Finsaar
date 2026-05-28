@@ -35,3 +35,5 @@ VITE_API_URL=http://localhost:3000
 - `npm run start:frontend` - run only the Vite frontend.
 - `npm run start:backend` - run only the Express backend.
 - `npm run build` - build frontend and backend.
+
+### Project is live at https://finsaar-zerodha.vercel.app
